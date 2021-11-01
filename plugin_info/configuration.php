@@ -31,13 +31,13 @@ if (!isConnect()) {
                 <select class="configKey form-control" data-l1key="interface">
                     <option value="">{{Défaut}}</option>
                     <?php
-                        $interfaces = network::getInterfaces();
-                        foreach ($interfaces as $interface) {
-                            $baseInterface = substr($interface, 0, strrpos($interface, '@'));
+                        $interfacesinfo = network::getInterfacesInfo();
+                        foreach ($interfacesinfo as $interfaceinfo) {
+                        $interface = $interfaceinfo["ifname"];
+                        $baseInterface = substr($interface, 0, strrpos($interface, '@'));
                             if ($baseInterface && $baseInterface != $interface)
                                 echo '<option value="' . $baseInterface . '">' . $baseInterface . '</option>';
                             echo '<option value="' . $interface . '">' . $interface . '</option>';
-                        }
                     ?>
                 </select>
             </div>
